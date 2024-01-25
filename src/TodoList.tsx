@@ -1,4 +1,5 @@
 import  {FC, useState} from "react"
+import './App.css';
 
 
 const TodoList: FC = () => {
@@ -30,8 +31,8 @@ const TodoList: FC = () => {
   };
 
   return (
-  <div className="flex justify-center">
-      <div className="bg-white w-[380px] h-[700px] md:w-[550px] md:h-[500px] rounded-lg mt-10">
+  <div className="flex justify-center  ">
+      <div className=" bg-white w-[380px] h-[700px] md:w-[550px] md:h-[500px] rounded-lg mt-10">
       <div className="px-10 mt-20">
         <h1 className="text-purple-500 font-bold">To-Do List</h1>
         <input className="w-full rounded-full bg-gray-300 h-10 pl-5 mt-2 text-purple-500" type="text" placeholder="add tasks..." value={newTask}
@@ -40,13 +41,13 @@ const TodoList: FC = () => {
       <div className="px-10 mt-2">
         <button onClick={addTask} className="bg-purple-500 w-full h-10  rounded-full text-white">Submit</button>
       </div>
-      <div className="mt-10 px-10 ">
+      <div className=" mt-10 px-10 main overflow-scroll h-[350px] md:h-[200px] ">
      <ul>
         {tasks.map(task => (
               <li
                 key={task.id}   
               >
-                <div className="flex justify-between">
+                <div className="flex justify-between  ">
                      <h1  className={`flex justify-between items-center ${task.completed ? 'line-through' : ''}`} onClick={() => toggleComplete(task.id)}>{task.text}</h1>
                 <button onClick={() => removeTask(task.id)}>X</button>
                 </div>
@@ -55,8 +56,7 @@ const TodoList: FC = () => {
             ))}
       </ul>
       </div>
-    </div> 
-    
+    </div>  
   </div>
   )
 }
