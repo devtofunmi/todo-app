@@ -1,4 +1,4 @@
-import  {FC, useState} from "react"
+import  {FC, useEffect, useState} from "react"
 import './App.css';
 
 
@@ -12,6 +12,11 @@ const TodoList: FC = () => {
 
     const [tasks, setTasks] = useState<item[]>([]);
     const [newTask, setNewTask] = useState<string>('');
+
+
+  useEffect(() => {
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+  }, [tasks]);
 
    const addTask = (): void => {
     if (newTask.trim() !== '') {
@@ -47,9 +52,13 @@ const TodoList: FC = () => {
               <li
                 key={task.id}   
               >
-                <div className="flex justify-between  ">
-                     <h1  className={`flex justify-between items-center ${task.completed ? 'line-through' : ''}`} onClick={() => toggleComplete(task.id)}>{task.text}</h1>
-                <button onClick={() => removeTask(task.id)}>X</button>
+                <div className="flex justify-between">
+                  <div>
+                    <h1  className={`flex justify-between items-center ${task.completed ? 'line-through' : ''}`} onClick={() => toggleComplete(task.id)}>{task.text}</h1>
+                  </div>
+                  <div>
+                    <button  onClick={() => removeTask(task.id)}>X</button>
+                    </div>       
                 </div>
                
               </li>
