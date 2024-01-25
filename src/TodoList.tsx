@@ -14,7 +14,7 @@ const TodoList: FC = () => {
     const [newTask, setNewTask] = useState<string>('');
 
     useEffect(() => {
-      const storedTasks = localStorage.getItem('tasks');
+      const storedTasks:string | null = localStorage.getItem('tasks');
       if (storedTasks) {
       setTasks(JSON.parse(storedTasks));
      }
