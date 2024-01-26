@@ -7,7 +7,7 @@ import { FC } from "react";
 const LandingPage: FC = () => {
   return (
     <>
-     <div className="flex p-[50px] w-full gap-[50px] flex-col md:flex-row"
+     <div className="flex p-5 md:p-[50px] w-full gap-[50px] flex-col md:flex-row"
       
       >
         <div className="w-full md:w-[60%] mt-[70px]" >
@@ -20,11 +20,11 @@ const LandingPage: FC = () => {
             notes filled with checklists.
           </h1>
           <div className="flex gap-[10px] mt-[30px] flex-col md:flex-row">
-            <button className="bg-black text-white hover:text-[#4cbf87]"
+            <button className="bg-black text-white hover:text-[#4cbf87] px-10 py-2 rounded-md"
             >
               <Link to="/login">LogIn</Link>
             </button>
-            <button className="bg-black text-white hover:text-[#4cbf87]"
+            <button className="bg-black text-white hover:text-[#4cbf87] px-10 py-2 rounded-md"
             >
               <Link to="/signup">SignUp</Link>
             </button>
