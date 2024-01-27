@@ -3,6 +3,8 @@ import TodoList from "./TodoList"
 import LandingPage from "./pages/LandingPage";
 import SignUp from "./authentication/SignUp";
 import Login from "./authentication/Login";
+import Tasks from "./pages/Tasks";
+import Notes from "./pages/Notes";
 
 function App(){
   
@@ -14,6 +16,8 @@ function App(){
             <Route path="/todolist" element={<TodoList />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/task" element={<Tasks />} />
+            <Route path="/note" element={<Notes />} />
           </Routes>
         </Router>
       </div>      
