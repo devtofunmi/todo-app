@@ -20,16 +20,16 @@ const Login: React.FC = () => {
               <input
                 type="email"
                 placeholder="Email"
-                className="py-3 px-3 mt-5 md:mt-2 text-white bg-black shadow-xl rounded-md  bg-opacity-25"
+                className="bg-transparent py-3 px-3 mt-5 md:mt-2 text-white bg-black shadow-xl border-[0px] border-white rounded-md  bg-opacity-25"
               />
                 <input
                   type="password"
                   placeholder="Password"
-                  className="py-3 px-3 mt-5 md:mt-2 text-white bg-black shadow-xl rounded-md  bg-opacity-25 "
+                  className="bg-transparent py-3 px-3 mt-5 md:mt-2 text-white bg-black shadow-xl border-[0px] border-white rounded-md  bg-opacity-25 "
                 />
               <button className=" w-full bg-black py-2 rounded-md hover:text-[#4cbf87] mt-2 text-white">
               <Link
-              to="/login"
+              to="/note"
              
             >  Submit  </Link>
               </button>
