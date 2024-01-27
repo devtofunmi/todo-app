@@ -2,7 +2,6 @@ import {FC} from 'react'
 import DashboardLayout from '../layout/DashboardLayout'
 import Topbar from '../components/Topbar';
 import { BsPlusCircle } from 'react-icons/bs';
-import { CiClock1 } from "react-icons/ci";
 
 import "../App.css"
 
