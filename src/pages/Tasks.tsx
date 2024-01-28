@@ -83,10 +83,9 @@ const Tasks: FC = () => {
           Ready For Today’s Tasks?
           <br /> Let’s Do This!!!
         </div>
-        <div className="mt-10"></div>
 
         <div className="w-[350px] md:w-[550px] ">
-          <div className="">
+          <div>
             <input
               className="w-full rounded-full  h-10 bg-transparent border-[0px] mt-5 text-white outline-none"
               type="text"
