@@ -1,10 +1,10 @@
 import {FC} from "react";
 import { Link } from "react-router-dom";
-import { MdSpaceDashboard } from "react-icons/md";
 import { BiTask } from "react-icons/bi";
 import { CgNotes } from "react-icons/cg";
-import { AiOutlineSetting } from "react-icons/ai";
-import { BiHelpCircle } from "react-icons/bi";
+import { IoTrashBinOutline } from "react-icons/io5";
+import { IoMdNotificationsOutline } from "react-icons/io";
+import { GoArchive } from "react-icons/go";
 
 const Sidebar: FC = () => {
   return (
@@ -12,14 +12,14 @@ const Sidebar: FC = () => {
       <div>
         <h1>Notes</h1>
       </div>
-      <Link to={"/"}>
-        <div className="mt-7 flex gap-3 items-center py-2 px-4 border-white border-[1px] rounded-lg cursor-pointer hover:bg-[#4cbf87]">
-          <MdSpaceDashboard
+      <Link to={"/note"}>
+        <div className="mt-5 flex gap-3 items-center py-2 px-4 border-white border-[1px] rounded-lg cursor-pointer hover:bg-[#4cbf87]">
+          <CgNotes
             size={25}
             className="hover:text-blue-500 text-white cursor-pointer "
           />
           <span>
-            <h1 className="text-md">Dashboard</h1>
+            <h1 className="text-md">Notes</h1>
           </span>
         </div>
       </Link>
@@ -36,38 +36,38 @@ const Sidebar: FC = () => {
         </div>
       </Link>
 
-      <Link to={"/note"}>
+      <Link to={"/"}>
         <div className="mt-5 flex gap-3 items-center py-2 px-4 border-white border-[1px] rounded-lg cursor-pointer hover:bg-[#4cbf87]">
-          <CgNotes
+          <IoMdNotificationsOutline 
             size={25}
             className="hover:text-blue-500 text-white cursor-pointer "
           />
           <span>
-            <h1 className="text-md">Notes</h1>
+            <h1 className="text-md">Reminders</h1>
           </span>
         </div>
       </Link>
 
       <Link to={"/"}>
         <div className="flex gap-3 items-center py-2 px-4 border-white border-[1px] rounded-lg cursor-pointer hover:bg-[#4cbf87] mt-20">
-          <AiOutlineSetting
+          <GoArchive 
             size={25}
             className="hover:text-blue-500 text-white cursor-pointer "
           />
           <span>
-            <h1 className="text-md">Settings</h1>
+            <h1 className="text-md">Archive</h1>
           </span>
         </div>
       </Link>
 
       <Link to={"/"}>
         <div className="mt-5 flex gap-3 items-center py-2 px-4 border-white border-[1px] rounded-lg cursor-pointer hover:bg-[#4cbf87]">
-          <BiHelpCircle
+          <IoTrashBinOutline 
             size={25}
             className="hover:text-blue-500 text-white cursor-pointer"
           />
           <span>
-            <h1 className="text-md">Help Center</h1>
+            <h1 className="text-md">Bin</h1>
           </span>
         </div>
       </Link>
