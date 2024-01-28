@@ -6,8 +6,6 @@ import { BsPlusCircle } from 'react-icons/bs';
 import NoteDetails from '../components/NoteDetails';
 import AddNote from '../components/AddNote';
 import { AiOutlineDelete } from "react-icons/ai";
-
-
 import '../App.css';
 import { GoArchive } from 'react-icons/go';
 import { IoMdNotificationsOutline } from 'react-icons/io';
@@ -62,7 +60,6 @@ const Notes: React.FC = () => {
     },
     ]);
 
-
   const handleAddNoteClick = () => {
     setIsAddNoteVisible(true);
   };
@@ -70,8 +67,6 @@ const Notes: React.FC = () => {
   const AddNoteClose = () => {
     setIsAddNoteVisible(false);
   };
-
-
 
   const handleNoteClick = (id: number) => {
     setSelectedNote(id);

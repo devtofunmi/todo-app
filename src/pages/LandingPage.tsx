@@ -7,9 +7,7 @@ import { FC } from "react";
 const LandingPage: FC = () => {
   return (
     <>
-     <div className="flex p-5 md:p-[50px] w-full gap-[50px] flex-col md:flex-row"
-      
-      >
+     <div className="flex p-5 md:p-[50px] w-full gap-[50px] flex-col md:flex-row">
         <div className="w-full md:w-[60%] mt-[70px]" >
           <h1 className="text-[40px] md:text-[90px] font-bold text-white leading-[50px] md:leading-[100px]"
           >
