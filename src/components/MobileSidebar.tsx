@@ -1,10 +1,9 @@
 import {FC} from "react";
 import { Link } from "react-router-dom";
 import { BiTask } from "react-icons/bi";
-import { CgNotes } from "react-icons/cg";
-import { IoTrashBinOutline } from "react-icons/io5";
 import { IoMdNotificationsOutline } from "react-icons/io";
-import { GoArchive } from "react-icons/go";
+import { MdOutlineArchive, MdOutlineLightbulb } from "react-icons/md";
+import { RiDeleteBin6Line } from "react-icons/ri";
 
 const MobileSidebar: FC = () => {
   return (
@@ -14,7 +13,7 @@ const MobileSidebar: FC = () => {
         {/* <h1>Notes</h1> */}
       </div>
       <div className="mt-7 flex gap-3 items-center   rounded-lg cursor-pointer hover:text-[#4cbf87] ">
-        <CgNotes
+        <MdOutlineLightbulb
           size={25}
           className="hover:text-[#4cbf87] text-white cursor-pointer "
         />
@@ -41,7 +40,7 @@ const MobileSidebar: FC = () => {
         </Link>
       </div>
       <div className="flex gap-3 items-center cursor-pointer hover:text-[#4cbf87]  mt-5">
-          <GoArchive
+          <MdOutlineArchive
           size={25}
           className="hover:text-[#4cbf87] text-white cursor-pointer "
         />
@@ -50,7 +49,7 @@ const MobileSidebar: FC = () => {
         </Link>
       </div>
       <div className="mt-5 flex gap-3 items-center cursor-pointer hover:text-[#4cbf87] ">
-        <IoTrashBinOutline 
+        <RiDeleteBin6Line
             size={25}
             className="hover:text-[#4cbf87] text-white cursor-pointer"
         />
