@@ -8,7 +8,7 @@ import { GoArchive } from "react-icons/go";
 
 const MobileSidebar: FC = () => {
   return (
-    <div className=" h-[380px] text-white p-3 bg-[#181819]  w-[250px] z-20 flex flex-col justify-left   border-[1px] border-white border-opacity-10">
+    <div className=" h-[300px] rounded-lg text-white p-3 bg-[#181819]  w-[250px] z-20 flex flex-col justify-left   border-[1px] border-white border-opacity-10">
       <div>
         {/* <img className="w-[100px]" src={dashboadlogo} alt="dashboard_logo" /> */}
         {/* <h1>Notes</h1> */}
