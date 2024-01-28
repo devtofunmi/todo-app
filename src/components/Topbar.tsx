@@ -1,4 +1,3 @@
-
 import avather from "../assets/avather.png";
 
 
