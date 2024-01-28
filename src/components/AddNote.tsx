@@ -12,13 +12,10 @@ const AddNote: FC<AddNoteProps> = ({ onClose }) => {
 
   const handleAddNote = () => {
     // Implement the logic to add the note (e.g., send to API, update state, etc.)
-    // For simplicity, let's just log the note to the console in this example
     console.log("New Note:", {
       title: noteTitle,
       description: noteDescription,
     });
-
-    // Close the AddNote component
     onClose();
   };
 
