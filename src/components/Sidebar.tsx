@@ -1,17 +1,16 @@
 import {FC} from "react";
 import { Link } from "react-router-dom";
 import { BiTask } from "react-icons/bi";
-import { CgNotes } from "react-icons/cg";
-import { IoTrashBinOutline } from "react-icons/io5";
 import { IoMdNotificationsOutline } from "react-icons/io";
-import { GoArchive } from "react-icons/go";
+import { MdOutlineArchive, MdOutlineLightbulb } from "react-icons/md";
+import { RiDeleteBin6Line } from "react-icons/ri";
 
 const Sidebar: FC = () => {
   return (
     <div className="mt-6 ml-8 h-[90vh] text-white p-5 bg-white shadow-2xl rounded-2xl bg-opacity-5 w-[200px] border-white border-[1px] border-opacity-10">
       <Link to={"/note"}>
         <div className="mt-5 flex gap-3 items-center  cursor-pointer hover:text-[#4cbf87]">
-          <CgNotes
+          <MdOutlineLightbulb 
             size={25}
             className="hover:text-[#4cbf87] text-white cursor-pointer "
           />
@@ -47,7 +46,7 @@ const Sidebar: FC = () => {
 
       <Link to={"/"}>
         <div className="flex gap-3 items-center  cursor-pointer hover:text-[#4cbf87] mt-5">
-          <GoArchive 
+          <MdOutlineArchive 
             size={25}
             className="hover:text-[#4cbf87] text-white cursor-pointer "
           />
@@ -59,7 +58,7 @@ const Sidebar: FC = () => {
 
       <Link to={"/"}>
         <div className="mt-5 flex gap-3 items-center  cursor-pointer hover:text-[#4cbf87]">
-          <IoTrashBinOutline 
+          <RiDeleteBin6Line 
             size={25}
             className="hover:text-[#4cbf87] text-white cursor-pointer"
           />
