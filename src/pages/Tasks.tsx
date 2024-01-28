@@ -1,19 +1,19 @@
-import { FC, useEffect, useState } from 'react';
+import { FC, useEffect, useState, ChangeEvent, KeyboardEvent } from 'react';
 import DashboardLayout from '../layout/DashboardLayout';
 import Topbar from '../components/Topbar';
 import { AiOutlineDelete } from 'react-icons/ai';
 
 import '../App.css';
 
-const Tasks: FC = () => {
-  interface item {
-    id: number;
-    text: string;
-    completed: boolean;
-  }
+interface Task {
+  id: number;
+  text: string;
+  completed: boolean;
+}
 
-  const [tasks, setTasks] = useState<item[]>([]);
-  const [completedTasks, setCompletedTasks] = useState<item[]>([]);
+const Tasks: FC = () => {
+  const [tasks, setTasks] = useState<Task[]>([]);
+  const [completedTasks, setCompletedTasks] = useState<Task[]>([]);
   const [newTask, setNewTask] = useState<string>('');
   const hasCompletedTasks = completedTasks.length > 0;
 
@@ -36,37 +36,41 @@ const Tasks: FC = () => {
   };
 
   const removeTask = (taskId: number): void => {
-    const updatedTasks = tasks.filter(task => task.id !== taskId);
-    const updatedCompletedTasks = completedTasks.filter(task => task.id !== taskId);
+    const updatedTasks = tasks.filter((task) => task.id !== taskId);
+    const updatedCompletedTasks = completedTasks.filter((task) => task.id !== taskId);
     setTasks(updatedTasks);
     setCompletedTasks(updatedCompletedTasks);
   };
 
-  const toggleComplete = (taskId: number) => {
-    const updatedTasks = tasks.map(task =>
+  const toggleComplete = (taskId: number): void => {
+    const updatedTasks = tasks.map((task) =>
       task.id === taskId ? { ...task, completed: !task.completed } : task
     );
     setTasks(updatedTasks);
 
-    if (updatedTasks.find(task => task.id === taskId)?.completed) {
-      const completedTask = updatedTasks.find(task => task.id === taskId);
+    if (updatedTasks.find((task) => task.id === taskId)?.completed) {
+      const completedTask = updatedTasks.find((task) => task.id === taskId);
       if (completedTask) {
         setCompletedTasks([...completedTasks, completedTask]);
       }
     } else {
-      const uncompletedTask = completedTasks.find(task => task.id === taskId);
+      const uncompletedTask = completedTasks.find((task) => task.id === taskId);
       if (uncompletedTask) {
-        setCompletedTasks(completedTasks.filter(task => task.id !== taskId));
+        setCompletedTasks(completedTasks.filter((task) => task.id !== taskId));
         setTasks([...updatedTasks, uncompletedTask]);
       }
     }
   };
 
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+  const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>): void => {
     if (e.key === 'Enter') {
       e.preventDefault();
       addTask();
     }
+  };
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
+    setNewTask(e.target.value);
   };
 
   return (
@@ -89,15 +93,40 @@ const Tasks: FC = () => {
               placeholder="Add tasks..."
               value={newTask}
               onKeyDown={handleKeyDown}
-              onChange={(e) => setNewTask(e.target.value)}
+              onChange={handleChange}
             />
           </div>
 
-          <div className="mt-5 text-white main overflow-scroll  ">
-          <ul>
-            {tasks
-              .filter((task) => !task.completed)
-              .map((task) => (
+          <div className="mt-5 text-white main overflow-scroll ">
+            <ul>
+              {tasks
+                .filter((task) => !task.completed)
+                .map((task) => (
+                  <li key={task.id}>
+                    <div className="flex justify-between">
+                      <div>
+                        <h1
+                          className={`flex justify-between items-center ${
+                            task.completed ? 'line-through' : ''
+                          }`}
+                          onClick={() => toggleComplete(task.id)}
+                        >
+                          {task.text}
+                        </h1>
+                      </div>
+                      <div>
+                        <button onClick={() => removeTask(task.id)}>
+                          <AiOutlineDelete size={15} className="hover:text-[#4cbf87] text-white cursor-pointer " />
+                        </button>
+                      </div>
+                    </div>
+                  </li>
+                ))}
+            </ul>
+
+            {hasCompletedTasks && <h1 className="text-white text-lg mt-5 mb-3">Complete Tasks</h1>}
+            <ul>
+              {completedTasks.map((task) => (
                 <li key={task.id}>
                   <div className="flex justify-between">
                     <div>
@@ -118,35 +147,8 @@ const Tasks: FC = () => {
                   </div>
                 </li>
               ))}
-          </ul>
-
-           {hasCompletedTasks && (
-            <h1 className="text-white text-lg mt-5 mb-3">Complete Tasks</h1>
-          )}
-          <ul>
-            {completedTasks.map((task) => (
-              <li key={task.id}> 
-                <div className="flex justify-between">
-                  <div>
-                    <h1
-                      className={`flex justify-between items-center ${
-                        task.completed ? 'line-through' : ''
-                      }`}
-                      onClick={() => toggleComplete(task.id)}
-                    >
-                      {task.text}
-                    </h1>
-                  </div>
-                  <div>
-                    <button onClick={() => removeTask(task.id)}>
-                      <AiOutlineDelete size={15} className="hover:text-[#4cbf87] text-white cursor-pointer " />
-                    </button>
-                  </div>
-                </div>
-              </li>
-            ))}
-          </ul>
-        </div>
+            </ul>
+          </div>
         </div>
       </div>
     </DashboardLayout>
