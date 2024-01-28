@@ -14,7 +14,7 @@ interface NoteDetailsProps {
 
 const NoteDetails: React.FC<NoteDetailsProps> = ({ notes, onClose }) => {
    if (!notes) {
-    return null; // You can return some placeholder or an empty div here
+    return null; 
   }
 
   return (
