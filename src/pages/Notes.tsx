@@ -5,8 +5,12 @@ import { AiOutlineSearch } from 'react-icons/ai';
 import { BsPlusCircle } from 'react-icons/bs';
 import NoteDetails from '../components/NoteDetails';
 import AddNote from '../components/AddNote';
+import { AiOutlineDelete } from "react-icons/ai";
+
 
 import '../App.css';
+import { GoArchive } from 'react-icons/go';
+import { IoMdNotificationsOutline } from 'react-icons/io';
 
 interface Note {
   id: number;
@@ -19,17 +23,8 @@ const Notes: React.FC = () => {
 
   const [searchTerm, setSearchTerm] = useState<string>('');
   const [isAddNoteVisible, setIsAddNoteVisible] = useState<boolean>(false);
-
-  const handleAddNoteClick = () => {
-    setIsAddNoteVisible(true);
-  };
-
-  const AddNoteClose = () => {
-    setIsAddNoteVisible(false);
-  };
-
-   const data: Note[] = [
-    {
+    const [notes, setNotes] = useState<Note[]>([
+       {
       id: 1,
       heading: "Funny Day At The Mall",
       description:
@@ -65,7 +60,18 @@ const Notes: React.FC = () => {
       description:
         "Lorem ipsum dolor sit amet consectetur. Pharetra vitae arcu est odio. Et velit blandit nunc orci viverra feugiat. Et vitae porttitor tristique ullamcorper posuere sodales eget. Amet quis laoreet egestas dolor vulputate eget. Sit gravida tristique odio sem. A adipiscing nibh vulputate in magna augue a aliquam. Aliquam dis pharetra libero aliquet diam aliquam ornare. Tristique tempus at cras aliquet id fames in felis. Nisi facilisis sit imperdiet nunc. Vehicula elit amet arcu id proin in. Magna iaculis neque nisl elit donec diam dolor placerat nulla. Libero aliquet ac neque sed eu. Sed enim vitae justo quam rutrum vitae eu cursus condimentum.Congue eget ultrices et at ipsum ultricies. Vitae porttitor eget risus sit convallis donec. Rhoncus quis cras neque gravida eget suscipit euismod velit diam. Libero laoreet aliquet sed nisl. In auctor arcu arcu arcu est neque pellentesque accumsan. Quis commodo rutrum nec viverra sed. Varius non vitae tempus erat feugiat egestas. Sit pulvinar id urna turpis dolor venenatis blandit gravida. In metus massa faucibus ac tincidunt varius vivamus.Commodo eget lorem sit malesuada hendrerit morbi quis. Convallis rhoncus ornare amet ac. Sagittis venenatis nisl rhoncus morbi. Gravida nec tincidunt consectetur facilisis. Faucibus ipsum cras pharetra morbi lectus magna nulla feugiat. Mauris cursus turpis vulputate tincidunt. Dignissim lectus sed turpis lorem. Habitasse dolor tristique feugiat nisl tortor in tincidunt facilisis quam. Quis nulla egestas lectus aliquam sociis adipiscing mauris. Magna est amet mauris sagittis dignissim mollis ultrices. Tincidunt dui dui mattis fringilla. Adipiscing pretium non viverra feugiat varius vel rutrum quam. Pellentesque fermentum dictumst est auctor porttitor vitae bibendum.Vitae adipiscing feugiat tincidunt etiam phasellus. A nisl netus turpis eleifend in suspendisse dignissim odio. Feugiat sed sit facilisis semper amet et tristique turpis. Arcu ultrices nulla urna .",
     },
-  ];
+    ]);
+
+
+  const handleAddNoteClick = () => {
+    setIsAddNoteVisible(true);
+  };
+
+  const AddNoteClose = () => {
+    setIsAddNoteVisible(false);
+  };
+
+
 
   const handleNoteClick = (id: number) => {
     setSelectedNote(id);
@@ -75,7 +81,7 @@ const Notes: React.FC = () => {
     setSelectedNote(null);
   };
 
-  const filteredData = data.filter((item) => {
+  const filteredData = notes.filter((item) => {
     const headingLowerCase = item.heading.toLowerCase();
     const descriptionLowerCase = item.description.toLowerCase();
     const searchTermLowerCase = searchTerm.toLowerCase();
@@ -87,14 +93,15 @@ const Notes: React.FC = () => {
   });
 
   const truncateDescription = (description: string, maxLength: number) => {
-    // Get the first `maxLength` words of the description
     const truncatedWords = description
       .split(' ')
       .slice(0, maxLength)
       .join(' ');
-
-    // Add ellipsis if the description is truncated
     return description.length > truncatedWords.length ? `${truncatedWords} ...` : truncatedWords;
+  };
+  const removeNote = (noteId:number): void => {
+    const updatedNotes = notes.filter(note => note.id !== noteId);
+    setNotes(updatedNotes);
   };
 
   return (
@@ -110,7 +117,6 @@ const Notes: React.FC = () => {
           </div>
           <div>
             <div className="mt-[-20px]">
-              {/* <h1 className="text-white text-[13px]">New Notes</h1> */}
               <div
                 className="w-[80px] h-[40px] md:w-[100px] md:h-[40px] border-[1px] border-white border-dashed flex justify-center items-center cursor-pointer md:mt-2"
                 onClick={handleAddNoteClick}
@@ -145,16 +151,30 @@ const Notes: React.FC = () => {
               <h2 className="text-[14px] font-bold mb-[10px] md:text-[18px]">{item.heading}</h2>
               <p className="text-[13px] md:text-[15px] ">
                 {selectedNote === item.id ? (
-                  item.description // Show full description if selected
+                  item.description
                 ) : (
                   truncateDescription(item.description, 10)
                 )}
               </p>
+              <div className='mt-2 flex gap-3' onClick={() => removeNote(item.id)}>
+                <AiOutlineDelete 
+                  size={15}
+                 className="hover:text-[#4cbf87] text-white cursor-pointer "
+                />
+                 <GoArchive 
+                   size={15}
+            className="hover:text-[#4cbf87] text-white cursor-pointer "
+          />
+          <IoMdNotificationsOutline 
+            size={15}
+            className="hover:text-[#4cbf87] text-white cursor-pointer "
+          />
+              </div>
             </div>
           ))}
         </div>
         {selectedNote && (
-          <NoteDetails note={data.find((item) => item.id === selectedNote)} onClose={handleBackClick} />
+          <NoteDetails notes={notes.find((item) => item.id === selectedNote)} onClose={handleBackClick} />
         )}
         {isAddNoteVisible && <AddNote onClose={AddNoteClose} />}
       </div>
