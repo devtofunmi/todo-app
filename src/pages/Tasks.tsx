@@ -15,6 +15,7 @@ const Tasks: FC = () => {
   const [tasks, setTasks] = useState<item[]>([]);
   const [completedTasks, setCompletedTasks] = useState<item[]>([]);
   const [newTask, setNewTask] = useState<string>('');
+  const hasCompletedTasks = completedTasks.length > 0;
 
   useEffect(() => {
     const storedTasks: string | null = localStorage.getItem('tasks');
@@ -119,7 +120,9 @@ const Tasks: FC = () => {
               ))}
           </ul>
 
-          <h1 className="text-white text-lg mt-5 mb-3">Complete Tasks</h1>
+           {hasCompletedTasks && (
+            <h1 className="text-white text-lg mt-5 mb-3">Complete Tasks</h1>
+          )}
           <ul>
             {completedTasks.map((task) => (
               <li key={task.id}> 
