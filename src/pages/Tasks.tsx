@@ -1,6 +1,7 @@
 import {FC, useEffect, useState} from 'react'
 import DashboardLayout from '../layout/DashboardLayout'
 import Topbar from '../components/Topbar';
+import { AiOutlineDelete } from "react-icons/ai";
 
 
 import "../App.css"
@@ -82,7 +83,12 @@ const Tasks: FC = () => {
                     <h1  className={`flex justify-between items-center ${task.completed ? 'line-through' : ''}`} onClick={() => toggleComplete(task.id)}>{task.text}</h1>
                   </div>
                   <div>
-                    <button  onClick={() => removeTask(task.id)}>X</button>
+                    <button  onClick={() => removeTask(task.id)}>
+                      <AiOutlineDelete 
+                  size={15}
+                 className="hover:text-[#4cbf87] text-white cursor-pointer "
+                />
+                    </button>
                     </div>       
                 </div>
                
