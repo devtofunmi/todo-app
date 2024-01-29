@@ -42,25 +42,29 @@ const Tasks: FC = () => {
     setCompletedTasks(updatedCompletedTasks);
   };
 
-  const toggleComplete = (taskId: number): void => {
-    const updatedTasks = tasks.map((task) =>
+const toggleComplete = (taskId: number): void => {
+  setTasks((prevTasks: Task[]) =>
+    prevTasks.map((task) =>
       task.id === taskId ? { ...task, completed: !task.completed } : task
-    );
-    setTasks(updatedTasks);
+    )
+  );
 
-    if (updatedTasks.find((task) => task.id === taskId)?.completed) {
-      const completedTask = updatedTasks.find((task) => task.id === taskId);
-      if (completedTask) {
-        setCompletedTasks([...completedTasks, completedTask]);
-      }
+  setCompletedTasks((prevCompletedTasks: Task[]) => {
+    const taskToToggle: Task | undefined = prevCompletedTasks.find((task) => task.id === taskId);
+
+    if (taskToToggle) {
+      setTasks((prevTasks: Task[]) => [...prevTasks, { ...taskToToggle, completed: false }]);
+      return prevCompletedTasks.filter((task) => task.id !== taskId);
     } else {
-      const uncompletedTask = completedTasks.find((task) => task.id === taskId);
+      const uncompletedTask = tasks.find((task) => task.id === taskId);
       if (uncompletedTask) {
-        setCompletedTasks(completedTasks.filter((task) => task.id !== taskId));
-        setTasks([...updatedTasks, uncompletedTask]);
+        setTasks(tasks.filter((task) => task.id !== taskId));
+        return [...prevCompletedTasks, { ...uncompletedTask, completed: true }];
       }
+      return prevCompletedTasks;
     }
-  };
+  });
+};
 
   const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>): void => {
     if (e.key === 'Enter') {
@@ -101,7 +105,7 @@ const Tasks: FC = () => {
               {tasks
                 .filter((task) => !task.completed)
                 .map((task) => (
-                  <li key={task.id}>
+                  <li key={`uncompleted-${task.id}`}>
                     <div className="flex justify-between">
                       <div>
                         <h1
@@ -126,7 +130,7 @@ const Tasks: FC = () => {
             {hasCompletedTasks && <h1 className="text-white text-lg mt-5 mb-3">Complete Tasks</h1>}
             <ul>
               {completedTasks.map((task) => (
-                <li key={task.id}>
+                <li key={`completed-${task.id}`}>
                   <div className="flex justify-between">
                     <div>
                       <h1
