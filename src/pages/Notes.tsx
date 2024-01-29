@@ -98,6 +98,7 @@ const Notes: React.FC = () => {
     const updatedNotes = notes.filter(note => note.id !== noteId);
     setNotes(updatedNotes);
   };
+  
 
   return (
     <DashboardLayout>
@@ -169,7 +170,10 @@ const Notes: React.FC = () => {
           ))}
         </div>
         {selectedNote && (
-          <NoteDetails notes={notes.find((item) => item.id === selectedNote)} onClose={handleBackClick} />
+          <NoteDetails
+    notes={notes.find((item) => item.id === selectedNote) || { id: 0, heading: '', description: '' }}
+    onClose={handleBackClick}
+  />
         )}
         {isAddNoteVisible && <AddNote onClose={AddNoteClose} />}
       </div>
