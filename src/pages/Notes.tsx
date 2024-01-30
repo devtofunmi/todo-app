@@ -70,17 +70,18 @@ const Notes: React.FC = () => {
     setIsAddNoteVisible(false);
   };
 
-
   const handleNoteClick = (id: number) => {
-  const isIconClick = (event: React.MouseEvent<SVGElement, MouseEvent>) => {
-    const target = event.target as HTMLElement;
-    return target.tagName === 'svg' || target.tagName === 'path';
-  };
-
-  if (!isIconClick) {
     setSelectedNote(id);
-  }
-};
+  };
+//   const handleNoteClick = (id: number) => {
+//   const isIconClick = (event: React.MouseEvent<SVGElement, MouseEvent>) => {
+//     const target = event.target as HTMLElement;
+//     return target.tagName === 'svg' || target.tagName === 'path';
+//   };
+//   if (!isIconClick) {
+//     setSelectedNote(id);
+//   }
+// };
 
   const handleBackClick = () => {
     setSelectedNote(null);
