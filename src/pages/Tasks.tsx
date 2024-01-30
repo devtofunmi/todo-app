@@ -106,7 +106,7 @@ const toggleComplete = (taskId: number): void => {
                 .filter((task) => !task.completed)
                 .map((task) => (
                   <li key={`uncompleted-${task.id}`}>
-                    <div className="flex justify-between bg-[#181819] my-3  p-3 rounded-md hover:bg-btntext hover:text-[#4cbf87]">
+                    <div className="flex justify-between border-[1px] border-white hover:bg-[#181819] cursor-pointer my-3  p-3 rounded-md hover:bg-btntext hover:text-[#4cbf87]">
                       <div>
                         <h1
                           className={`flex justify-between items-center ${
@@ -131,7 +131,7 @@ const toggleComplete = (taskId: number): void => {
             <ul>
               {completedTasks.map((task) => (
                 <li key={`completed-${task.id}`}>
-                  <div className="flex justify-between bg-[#181819] my-3  p-3 rounded-md hover:bg-btntext hover:text-[#4cbf87]">
+                  <div className="flex justify-between border-[1px] border-white hover:bg-[#181819] cursor-pointer my-3  p-3 rounded-md hover:bg-btntext hover:text-[#4cbf87]">
                     <div>
                       <h1
                         className={`flex justify-between items-center ${
