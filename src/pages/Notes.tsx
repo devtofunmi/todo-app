@@ -22,7 +22,7 @@ const Notes: React.FC = () => {
 
   const [searchTerm, setSearchTerm] = useState<string>('');
   const [isAddNoteVisible, setIsAddNoteVisible] = useState<boolean>(false);
-    const [notes, setNotes] = useState<Note[]>([
+  const [notes, setNotes] = useState<Note[]>([
        {
       id: 1,
       heading: "Funny Day At The Mall",
@@ -65,7 +65,8 @@ const Notes: React.FC = () => {
     setIsAddNoteVisible(true);
   };
 
-  const AddNoteClose = () => {
+  const handleAddNoteClose = () => {
+    setSelectedNote(null);
     setIsAddNoteVisible(false);
   };
 
@@ -76,6 +77,7 @@ const Notes: React.FC = () => {
   const handleBackClick = () => {
     setSelectedNote(null);
   };
+  
 
   const filteredData = notes.filter((item) => {
     const headingLowerCase = item.heading.toLowerCase();
@@ -99,6 +101,21 @@ const Notes: React.FC = () => {
     const updatedNotes = notes.filter(note => note.id !== noteId);
     setNotes(updatedNotes);
   };
+
+ const handleAddNote = (title: string, description: string) => {
+    const newNote: Note = {
+      id: notes.length + 1,
+      heading: title,
+      description: description,
+    };
+    setNotes([...notes, newNote]);
+
+     if (!selectedNote) {
+      setSelectedNote(newNote.id);
+    }
+    setIsAddNoteVisible(false);
+  };
+
   
 
   return (
@@ -185,13 +202,13 @@ const Notes: React.FC = () => {
             </div>
           ))}
         </div>
-        {selectedNote && (
-          <NoteDetails
-    notes={notes.find((item) => item.id === selectedNote) || { id: 0, heading: '', description: '' }}
-    onClose={handleBackClick}
-  />
-        )}
-        {isAddNoteVisible && <AddNote onClose={AddNoteClose} />}
+         {selectedNote && (
+        <NoteDetails
+          notes={notes.find((item) => item.id === selectedNote) || { id: 0, heading: '', description: '' }}
+          onClose={handleBackClick}
+        />
+      )}
+      {isAddNoteVisible && <AddNote onClose={handleAddNoteClose} onAddNote={handleAddNote} />}
       </div>
     </DashboardLayout>
   );
