@@ -9,6 +9,7 @@ import { AiOutlineDelete } from "react-icons/ai";
 import '../App.css';
 import { GoArchive } from 'react-icons/go';
 import { IoMdNotificationsOutline } from 'react-icons/io';
+import { TiPinOutline } from 'react-icons/ti';
 
 interface Note {
   id: number;
@@ -144,6 +145,12 @@ const Notes: React.FC = () => {
               key={item.id}
               onClick={() => handleNoteClick(item.id)}
             >
+              <div className='flex justify-end'>
+                  <TiPinOutline 
+                   size={15}
+                   className="hover:text-[#4cbf87] text-white cursor-pointer "
+                   />
+              </div>
               <h2 className="text-[14px] font-bold mb-[10px] md:text-[18px]">{item.heading}</h2>
               <p className="text-[13px] md:text-[15px] ">
                 {selectedNote === item.id ? (
