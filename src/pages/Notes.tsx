@@ -70,9 +70,17 @@ const Notes: React.FC = () => {
     setIsAddNoteVisible(false);
   };
 
+
   const handleNoteClick = (id: number) => {
-    setSelectedNote(id);
+  const isIconClick = (event: React.MouseEvent<SVGElement, MouseEvent>) => {
+    const target = event.target as HTMLElement;
+    return target.tagName === 'svg' || target.tagName === 'path';
   };
+
+  if (!isIconClick) {
+    setSelectedNote(id);
+  }
+};
 
   const handleBackClick = () => {
     setSelectedNote(null);
@@ -180,11 +188,10 @@ const Notes: React.FC = () => {
                   truncateDescription(item.description, 10)
                 )}
               </p>
-              <div className=''>
-                <div className=''>
-                 <div className='mt-2 flex gap-3' onClick={() => removeNote(item.id)}>
+               <div className='mt-2 flex gap-3'>
                 <AiOutlineDelete 
                   size={15}
+                  onClick={() => removeNote(item.id)}
                  className="hover:text-[#4cbf87] text-white cursor-pointer "
                 />
                  <GoArchive 
@@ -195,10 +202,7 @@ const Notes: React.FC = () => {
             size={15}
             className="hover:text-[#4cbf87] text-white cursor-pointer "
           />
-              </div>
-              </div>
-              </div>
-             
+              </div>          
             </div>
           ))}
         </div>
