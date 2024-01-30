@@ -145,12 +145,16 @@ const Notes: React.FC = () => {
               key={item.id}
               onClick={() => handleNoteClick(item.id)}
             >
-              <div className='flex justify-end'>
-                  <TiPinOutline 
+              <div className='relative mb-2'>
+        
+                <div className='absolute right-0 '>
+                   <TiPinOutline
                    size={15}
                    className="hover:text-[#4cbf87] text-white cursor-pointer "
                    />
+                </div>
               </div>
+            
               <h2 className="text-[14px] font-bold mb-[10px] md:text-[18px]">{item.heading}</h2>
               <p className="text-[13px] md:text-[15px] ">
                 {selectedNote === item.id ? (
@@ -159,7 +163,9 @@ const Notes: React.FC = () => {
                   truncateDescription(item.description, 10)
                 )}
               </p>
-              <div className='mt-2 flex gap-3' onClick={() => removeNote(item.id)}>
+              <div className=''>
+                <div className=''>
+                 <div className='mt-2 flex gap-3' onClick={() => removeNote(item.id)}>
                 <AiOutlineDelete 
                   size={15}
                  className="hover:text-[#4cbf87] text-white cursor-pointer "
@@ -173,6 +179,9 @@ const Notes: React.FC = () => {
             className="hover:text-[#4cbf87] text-white cursor-pointer "
           />
               </div>
+              </div>
+              </div>
+             
             </div>
           ))}
         </div>
