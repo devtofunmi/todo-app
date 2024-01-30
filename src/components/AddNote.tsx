@@ -3,21 +3,24 @@ import { AiOutlineClose } from "react-icons/ai";
 
 interface AddNoteProps {
   onClose: () => void;
+  onAddNote: (title: string, description: string) => void;
 }
 
-const AddNote: FC<AddNoteProps> = ({ onClose }) => {
+const AddNote: FC<AddNoteProps> = ({ onClose, onAddNote }) => {
   const [noteTitle, setNoteTitle] = useState<string>("");
   const [noteDescription, setNoteDescription] = useState<string>("");
 
-
-  const handleAddNote = () => {
-    // Implement the logic to add the note (e.g., send to API, update state, etc.)
-    console.log("New Note:", {
+   const handleAddNote = () => {
+     console.log("New Note:", {
       title: noteTitle,
       description: noteDescription,
     });
-    onClose();
+    if (noteTitle.trim() !== "" && noteDescription.trim() !== "") {
+      onAddNote(noteTitle, noteDescription);
+      onClose();
+    }
   };
+
 
   return (
     <div className="fixed top-0 left-0 right-0 bottom-0 flex items-center justify-center bg-black bg-opacity-50">
