@@ -169,7 +169,6 @@ const Notes: React.FC = () => {
                 selectedNote === item.id ? 'bg-gray-500' : ''
               }`}
               key={item.id}
-              onClick={() => handleNoteClick(item.id)}
             >
               <div className='relative mb-2'>
         
@@ -182,7 +181,10 @@ const Notes: React.FC = () => {
               </div>
             
               <h2 className="text-[14px] font-bold mb-[10px] md:text-[18px]">{item.heading}</h2>
-              <p className="text-[13px] md:text-[15px] ">
+              <p 
+              onClick={() => handleNoteClick(item.id)}
+              
+              className="text-[13px] md:text-[15px] ">
                 {selectedNote === item.id ? (
                   item.description
                 ) : (
