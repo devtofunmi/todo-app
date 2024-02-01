@@ -60,6 +60,7 @@ const Notes: React.FC = () => {
         "Lorem ipsum dolor sit amet consectetur. Pharetra vitae arcu est odio. Et velit blandit nunc orci viverra feugiat. Et vitae porttitor tristique ullamcorper posuere sodales eget. Amet quis laoreet egestas dolor vulputate eget. Sit gravida tristique odio sem. A adipiscing nibh vulputate in magna augue a aliquam. Aliquam dis pharetra libero aliquet diam aliquam ornare. Tristique tempus at cras aliquet id fames in felis. Nisi facilisis sit imperdiet nunc. Vehicula elit amet arcu id proin in. Magna iaculis neque nisl elit donec diam dolor placerat nulla. Libero aliquet ac neque sed eu. Sed enim vitae justo quam rutrum vitae eu cursus condimentum.Congue eget ultrices et at ipsum ultricies. Vitae porttitor eget risus sit convallis donec. Rhoncus quis cras neque gravida eget suscipit euismod velit diam. Libero laoreet aliquet sed nisl. In auctor arcu arcu arcu est neque pellentesque accumsan. Quis commodo rutrum nec viverra sed. Varius non vitae tempus erat feugiat egestas. Sit pulvinar id urna turpis dolor venenatis blandit gravida. In metus massa faucibus ac tincidunt varius vivamus.Commodo eget lorem sit malesuada hendrerit morbi quis. Convallis rhoncus ornare amet ac. Sagittis venenatis nisl rhoncus morbi. Gravida nec tincidunt consectetur facilisis. Faucibus ipsum cras pharetra morbi lectus magna nulla feugiat. Mauris cursus turpis vulputate tincidunt. Dignissim lectus sed turpis lorem. Habitasse dolor tristique feugiat nisl tortor in tincidunt facilisis quam. Quis nulla egestas lectus aliquam sociis adipiscing mauris. Magna est amet mauris sagittis dignissim mollis ultrices. Tincidunt dui dui mattis fringilla. Adipiscing pretium non viverra feugiat varius vel rutrum quam. Pellentesque fermentum dictumst est auctor porttitor vitae bibendum.Vitae adipiscing feugiat tincidunt etiam phasellus. A nisl netus turpis eleifend in suspendisse dignissim odio. Feugiat sed sit facilisis semper amet et tristique turpis. Arcu ultrices nulla urna .",
     },
     ]);
+  const [pinnedNotes, setPinnedNotes] = useState<number[]>([]);  
 
   const handleAddNoteClick = () => {
     setIsAddNoteVisible(true);
@@ -73,15 +74,21 @@ const Notes: React.FC = () => {
   const handleNoteClick = (id: number) => {
     setSelectedNote(id);
   };
-//   const handleNoteClick = (id: number) => {
-//   const isIconClick = (event: React.MouseEvent<SVGElement, MouseEvent>) => {
-//     const target = event.target as HTMLElement;
-//     return target.tagName === 'svg' || target.tagName === 'path';
-//   };
-//   if (!isIconClick) {
-//     setSelectedNote(id);
-//   }
-// };
+
+const handlePinClick = (id: number) => {
+    const isPinned = pinnedNotes.includes(id);
+    const updatedPinnedNotes = isPinned
+      ? pinnedNotes.filter((noteId) => noteId !== id)
+      : [...pinnedNotes, id];
+
+    setPinnedNotes(updatedPinnedNotes);
+  };
+
+  const handleUnpinClick = (id: number) => {
+    const updatedPinnedNotes = pinnedNotes.filter((noteId) => noteId !== id);
+    setPinnedNotes(updatedPinnedNotes);
+  };
+
 
   const handleBackClick = () => {
     setSelectedNote(null);
@@ -109,6 +116,8 @@ const Notes: React.FC = () => {
   const removeNote = (noteId:number): void => {
     const updatedNotes = notes.filter(note => note.id !== noteId);
     setNotes(updatedNotes);
+    const updatedPinnedNotes = pinnedNotes.filter((id) => id !== noteId);
+    setPinnedNotes(updatedPinnedNotes);
   };
 
  const handleAddNote = (title: string, description: string) => {
@@ -162,6 +171,60 @@ const Notes: React.FC = () => {
             placeholder="Search Notes"
           />
         </div>
+     <div>
+       {pinnedNotes.length > 0 && (
+        <div>
+          <h1 className="text-white lg:px-8 md:px-5 mt-5">Pinned Notes</h1>
+           <div className="flex flex-wrap lg:px-8 justify-evenly text-white mt-5 md:gap-5 md:justify-start md:px-5">
+          {pinnedNotes.map((id) => {
+            const note = notes.find((note) => note.id === id);
+            return (
+              <div
+                key={id}
+                className={`border-[1px] border-white p-4 mb-3 lg:w-[200px] rounded-md cursor-pointer md:w-full ${
+                  selectedNote === id ? 'bg-gray-500' : ''
+                }`}
+               
+              >
+                <div className='mt-2 flex gap-3'>
+                  <TiPinOutline
+                    size={15}
+                    onClick={() => handleUnpinClick(id)}
+                    className="hover:text-[#4cbf87] text-[#4cbf87] cursor-pointer"
+                  />
+                </div>
+                <h2 
+                 onClick={() => handleNoteClick(id)}
+                className="text-[14px] font-bold mb-[10px] md:text-[18px]">{note?.heading}</h2>
+                <p
+                onClick={() => handleNoteClick(id)} 
+                className="text-[13px] md:text-[15px]">
+                      {selectedNote === id
+                        ? note?.description
+                        : truncateDescription(note?.description || '', 10)}
+                    </p>
+                  <div className='mt-2 flex gap-3'>
+               <AiOutlineDelete
+                        size={15}
+                        onClick={() => removeNote(id)}
+                        className="hover:text-[#4cbf87] text-white cursor-pointer"
+                      />
+                 <GoArchive 
+                   size={15}
+            className="hover:text-[#4cbf87] text-white cursor-pointer "
+          />
+          <IoMdNotificationsOutline 
+            size={15}
+            className="hover:text-[#4cbf87] text-white cursor-pointer "
+          />
+              </div>    
+              </div>
+            );
+          })}
+        </div>
+        </div>
+      )}
+      </div>  
         <div className="flex flex-wrap lg:px-8 justify-evenly text-white mt-14 md:gap-5 md:justify-start md:px-5">
           {filteredData.map((item) => (
             <div
@@ -174,13 +237,16 @@ const Notes: React.FC = () => {
         
                 <div className='absolute right-0 '>
                    <TiPinOutline
+                   onClick={() => handlePinClick(item.id)}
                    size={15}
                    className="hover:text-[#4cbf87] text-white cursor-pointer "
                    />
                 </div>
               </div>
             
-              <h2 className="text-[14px] font-bold mb-[10px] md:text-[18px]">{item.heading}</h2>
+              <h2 
+              onClick={() => handleNoteClick(item.id)}
+               className="text-[14px] font-bold mb-[10px] md:text-[18px]">{item.heading}</h2>
               <p 
               onClick={() => handleNoteClick(item.id)}
               
