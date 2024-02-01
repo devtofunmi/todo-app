@@ -15,6 +15,7 @@ interface Note {
   id: number;
   heading: string;
   description: string;
+  pinned: boolean;
 }
 
 const Notes: React.FC = () => {
@@ -26,17 +27,20 @@ const Notes: React.FC = () => {
        {
       id: 1,
       heading: "Funny Day At The Mall",
+      pinned: false,
       description:
         "Lorem ipsum dolor sit amet consectetur. Pharetra vitae arcu est odio. Et velit blandit nunc orci viverra feugiat. Et vitae porttitor tristique ullamcorper posuere sodales eget. Amet quis laoreet egestas dolor vulputate eget. Sit gravida tristique odio sem. A adipiscing nibh vulputate in magna augue a aliquam. Aliquam dis pharetra libero aliquet diam aliquam ornare. Tristique tempus at cras aliquet id fames in felis. Nisi facilisis sit imperdiet nunc. Vehicula elit amet arcu id proin in. Magna iaculis neque nisl elit donec diam dolor placerat nulla. Libero aliquet ac neque sed eu. Sed enim vitae justo quam rutrum vitae eu cursus condimentum.Congue eget ultrices et at ipsum ultricies. Vitae porttitor eget risus sit convallis donec. Rhoncus quis cras neque gravida eget suscipit euismod velit diam. Libero laoreet aliquet sed nisl. In auctor arcu arcu arcu est neque pellentesque accumsan. Quis commodo rutrum nec viverra sed. Varius non vitae tempus erat feugiat egestas. Sit pulvinar id urna turpis dolor venenatis blandit gravida. In metus massa faucibus ac tincidunt varius vivamus.Commodo eget lorem sit malesuada hendrerit morbi quis. Convallis rhoncus ornare amet ac. Sagittis venenatis nisl rhoncus morbi. Gravida nec tincidunt consectetur facilisis. Faucibus ipsum cras pharetra morbi lectus magna nulla feugiat. Mauris cursus turpis vulputate tincidunt. Dignissim lectus sed turpis lorem. Habitasse dolor tristique feugiat nisl tortor in tincidunt facilisis quam. Quis nulla egestas lectus aliquam sociis adipiscing mauris. Magna est amet mauris sagittis dignissim mollis ultrices. Tincidunt dui dui mattis fringilla. Adipiscing pretium non viverra feugiat varius vel rutrum quam. Pellentesque fermentum dictumst est auctor porttitor vitae bibendum.Vitae adipiscing feugiat tincidunt etiam phasellus. A nisl netus turpis eleifend in suspendisse dignissim odio. Feugiat sed sit facilisis semper amet et tristique turpis. Arcu ultrices nulla urna .",
     },
     {
       id: 2,
       heading: "Bucket List For New Year",
+      pinned: false,
       description:
         "Lorem ipsum dolor sit amet consectetur. Pharetra vitae arcu est odio. Et velit blandit nunc orci viverra feugiat. Et vitae porttitor tristique ullamcorper posuere sodales eget. Amet quis laoreet egestas dolor vulputate eget. Sit gravida tristique odio sem. A adipiscing nibh vulputate in magna augue a aliquam. Aliquam dis pharetra libero aliquet diam aliquam ornare. Tristique tempus at cras aliquet id fames in felis. Nisi facilisis sit imperdiet nunc. Vehicula elit amet arcu id proin in. Magna iaculis neque nisl elit donec diam dolor placerat nulla. Libero aliquet ac neque sed eu. Sed enim vitae justo quam rutrum vitae eu cursus condimentum.Congue eget ultrices et at ipsum ultricies. Vitae porttitor eget risus sit convallis donec. Rhoncus quis cras neque gravida eget suscipit euismod velit diam. Libero laoreet aliquet sed nisl. In auctor arcu arcu arcu est neque pellentesque accumsan. Quis commodo rutrum nec viverra sed. Varius non vitae tempus erat feugiat egestas. Sit pulvinar id urna turpis dolor venenatis blandit gravida. In metus massa faucibus ac tincidunt varius vivamus.Commodo eget lorem sit malesuada hendrerit morbi quis. Convallis rhoncus ornare amet ac. Sagittis venenatis nisl rhoncus morbi. Gravida nec tincidunt consectetur facilisis. Faucibus ipsum cras pharetra morbi lectus magna nulla feugiat. Mauris cursus turpis vulputate tincidunt. Dignissim lectus sed turpis lorem. Habitasse dolor tristique feugiat nisl tortor in tincidunt facilisis quam. Quis nulla egestas lectus aliquam sociis adipiscing mauris. Magna est amet mauris sagittis dignissim mollis ultrices. Tincidunt dui dui mattis fringilla. Adipiscing pretium non viverra feugiat varius vel rutrum quam. Pellentesque fermentum dictumst est auctor porttitor vitae bibendum.Vitae adipiscing feugiat tincidunt etiam phasellus. A nisl netus turpis eleifend in suspendisse dignissim odio. Feugiat sed sit facilisis semper amet et tristique turpis. Arcu ultrices nulla urna .",
     },
     {
       id: 3,
+      pinned: false,
       heading: "Birthday Wishlist",
       description:
         "Lorem ipsum dolor sit amet consectetur. Sapien est adipiscing odio ullamcorper faucibus aliquam. Hac urna nibh mi vitae",
@@ -44,18 +48,21 @@ const Notes: React.FC = () => {
     {
       id: 4,
       heading: "1st Day At Therapy",
+      pinned: false,
       description:
         "Lorem ipsum dolor sit amet consectetur. Pharetra vitae arcu est odio. Et velit blandit nunc orci viverra feugiat. Et vitae porttitor tristique ullamcorper posuere sodales eget. Amet quis laoreet egestas dolor vulputate eget. Sit gravida tristique odio sem. A adipiscing nibh vulputate in magna augue a aliquam. Aliquam dis pharetra libero aliquet diam aliquam ornare. Tristique tempus at cras aliquet id fames in felis. Nisi facilisis sit imperdiet nunc. Vehicula elit amet arcu id proin in. Magna iaculis neque nisl elit donec diam dolor placerat nulla. Libero aliquet ac neque sed eu. Sed enim vitae justo quam rutrum vitae eu cursus condimentum.Congue eget ultrices et at ipsum ultricies. Vitae porttitor eget risus sit convallis donec. Rhoncus quis cras neque gravida eget suscipit euismod velit diam. Libero laoreet aliquet sed nisl. In auctor arcu arcu arcu est neque pellentesque accumsan. Quis commodo rutrum nec viverra sed. Varius non vitae tempus erat feugiat egestas. Sit pulvinar id urna turpis dolor venenatis blandit gravida. In metus massa faucibus ac tincidunt varius vivamus.Commodo eget lorem sit malesuada hendrerit morbi quis. Convallis rhoncus ornare amet ac. Sagittis venenatis nisl rhoncus morbi. Gravida nec tincidunt consectetur facilisis. Faucibus ipsum cras pharetra morbi lectus magna nulla feugiat. Mauris cursus turpis vulputate tincidunt. Dignissim lectus sed turpis lorem. Habitasse dolor tristique feugiat nisl tortor in tincidunt facilisis quam. Quis nulla egestas lectus aliquam sociis adipiscing mauris. Magna est amet mauris sagittis dignissim mollis ultrices. Tincidunt dui dui mattis fringilla. Adipiscing pretium non viverra feugiat varius vel rutrum quam. Pellentesque fermentum dictumst est auctor porttitor vitae bibendum.Vitae adipiscing feugiat tincidunt etiam phasellus. A nisl netus turpis eleifend in suspendisse dignissim odio. Feugiat sed sit facilisis semper amet et tristique turpis. Arcu ultrices nulla urna .",
     },
     {
       id: 5,
       heading: "Date With Yarden",
+      pinned: false,
       description:
         "Lorem ipsum dolor sit amet consectetur. Pharetra vitae arcu est odio. Et velit blandit nunc orci viverra feugiat. Et vitae porttitor tristique ullamcorper posuere sodales eget. Amet quis laoreet egestas dolor vulputate eget. Sit gravida tristique odio sem. A adipiscing nibh vulputate in magna augue a aliquam. Aliquam dis pharetra libero aliquet diam aliquam ornare. Tristique tempus at cras aliquet id fames in felis. Nisi facilisis sit imperdiet nunc. Vehicula elit amet arcu id proin in. Magna iaculis neque nisl elit donec diam dolor placerat nulla. Libero aliquet ac neque sed eu. Sed enim vitae justo quam rutrum vitae eu cursus condimentum.Congue eget ultrices et at ipsum ultricies. Vitae porttitor eget risus sit convallis donec. Rhoncus quis cras neque gravida eget suscipit euismod velit diam. Libero laoreet aliquet sed nisl. In auctor arcu arcu arcu est neque pellentesque accumsan. Quis commodo rutrum nec viverra sed. Varius non vitae tempus erat feugiat egestas. Sit pulvinar id urna turpis dolor venenatis blandit gravida. In metus massa faucibus ac tincidunt varius vivamus.Commodo eget lorem sit malesuada hendrerit morbi quis. Convallis rhoncus ornare amet ac. Sagittis venenatis nisl rhoncus morbi. Gravida nec tincidunt consectetur facilisis. Faucibus ipsum cras pharetra morbi lectus magna nulla feugiat. Mauris cursus turpis vulputate tincidunt. Dignissim lectus sed turpis lorem. Habitasse dolor tristique feugiat nisl tortor in tincidunt facilisis quam. Quis nulla egestas lectus aliquam sociis adipiscing mauris. Magna est amet mauris sagittis dignissim mollis ultrices. Tincidunt dui dui mattis fringilla. Adipiscing pretium non viverra feugiat varius vel rutrum quam. Pellentesque fermentum dictumst est auctor porttitor vitae bibendum.Vitae adipiscing feugiat tincidunt etiam phasellus. A nisl netus turpis eleifend in suspendisse dignissim odio. Feugiat sed sit facilisis semper amet et tristique turpis. Arcu ultrices nulla urna .",
     },
     {
       id: 6,
       heading: "Terax’s vet. Appointment",
+      pinned: false,
       description:
         "Lorem ipsum dolor sit amet consectetur. Pharetra vitae arcu est odio. Et velit blandit nunc orci viverra feugiat. Et vitae porttitor tristique ullamcorper posuere sodales eget. Amet quis laoreet egestas dolor vulputate eget. Sit gravida tristique odio sem. A adipiscing nibh vulputate in magna augue a aliquam. Aliquam dis pharetra libero aliquet diam aliquam ornare. Tristique tempus at cras aliquet id fames in felis. Nisi facilisis sit imperdiet nunc. Vehicula elit amet arcu id proin in. Magna iaculis neque nisl elit donec diam dolor placerat nulla. Libero aliquet ac neque sed eu. Sed enim vitae justo quam rutrum vitae eu cursus condimentum.Congue eget ultrices et at ipsum ultricies. Vitae porttitor eget risus sit convallis donec. Rhoncus quis cras neque gravida eget suscipit euismod velit diam. Libero laoreet aliquet sed nisl. In auctor arcu arcu arcu est neque pellentesque accumsan. Quis commodo rutrum nec viverra sed. Varius non vitae tempus erat feugiat egestas. Sit pulvinar id urna turpis dolor venenatis blandit gravida. In metus massa faucibus ac tincidunt varius vivamus.Commodo eget lorem sit malesuada hendrerit morbi quis. Convallis rhoncus ornare amet ac. Sagittis venenatis nisl rhoncus morbi. Gravida nec tincidunt consectetur facilisis. Faucibus ipsum cras pharetra morbi lectus magna nulla feugiat. Mauris cursus turpis vulputate tincidunt. Dignissim lectus sed turpis lorem. Habitasse dolor tristique feugiat nisl tortor in tincidunt facilisis quam. Quis nulla egestas lectus aliquam sociis adipiscing mauris. Magna est amet mauris sagittis dignissim mollis ultrices. Tincidunt dui dui mattis fringilla. Adipiscing pretium non viverra feugiat varius vel rutrum quam. Pellentesque fermentum dictumst est auctor porttitor vitae bibendum.Vitae adipiscing feugiat tincidunt etiam phasellus. A nisl netus turpis eleifend in suspendisse dignissim odio. Feugiat sed sit facilisis semper amet et tristique turpis. Arcu ultrices nulla urna .",
     },
@@ -75,19 +82,35 @@ const Notes: React.FC = () => {
     setSelectedNote(id);
   };
 
-const handlePinClick = (id: number) => {
-    const isPinned = pinnedNotes.includes(id);
-    const updatedPinnedNotes = isPinned
-      ? pinnedNotes.filter((noteId) => noteId !== id)
-      : [...pinnedNotes, id];
+  const pinUnpinNote = (id: number) => {
+  const updatedNotes = notes.map((note) => {
+    if (note.id === id) {
+      note.pinned = !note.pinned;
+    }
+    return note;
+  });
 
-    setPinnedNotes(updatedPinnedNotes);
-  };
+  setNotes(updatedNotes);
 
-  const handleUnpinClick = (id: number) => {
-    const updatedPinnedNotes = pinnedNotes.filter((noteId) => noteId !== id);
-    setPinnedNotes(updatedPinnedNotes);
-  };
+  const updatedPinnedNotes = updatedNotes.filter((note) => note.pinned).map((note) => note.id);
+  setPinnedNotes(updatedPinnedNotes);
+};
+
+
+// const handlePinClick = (id: number) => {
+//     const isPinned = pinnedNotes.includes(id);
+//     const updatedPinnedNotes = isPinned
+//       ? pinnedNotes.filter((noteId) => noteId !== id)
+//       : [...pinnedNotes, id];
+
+//     setPinnedNotes(updatedPinnedNotes);
+    
+//   };
+
+  // const handleUnpinClick = (id: number) => {
+  //   const updatedPinnedNotes = pinnedNotes.filter((noteId) => noteId !== id);
+  //   setPinnedNotes(updatedPinnedNotes);
+  // };
 
 
   const handleBackClick = () => {
@@ -125,6 +148,7 @@ const handlePinClick = (id: number) => {
       id: notes.length + 1,
       heading: title,
       description: description,
+      pinned: false,
     };
     setNotes([...notes, newNote]);
 
@@ -190,7 +214,7 @@ const handlePinClick = (id: number) => {
         
                 <div className='absolute right-0 '>
                    <TiPinOutline
-                   onClick={() => handleUnpinClick(id)}
+                   onClick={() => pinUnpinNote(id)}
                    size={15}
                    className="hover:text-[#4cbf87] text-white cursor-pointer "
                    />
@@ -240,7 +264,7 @@ const handlePinClick = (id: number) => {
         
                 <div className='absolute right-0 '>
                    <TiPinOutline
-                   onClick={() => handlePinClick(item.id)}
+                  onClick={() => pinUnpinNote(item.id)}
                    size={15}
                    className="hover:text-[#4cbf87] text-white cursor-pointer "
                    />
@@ -280,7 +304,7 @@ const handlePinClick = (id: number) => {
         </div>
          {selectedNote && (
         <NoteDetails
-          notes={notes.find((item) => item.id === selectedNote) || { id: 0, heading: '', description: '' }}
+          notes={notes.find((item) => item.id === selectedNote) || { id: notes.length + 1, heading: '', description: '',pinned: false }}
           onClose={handleBackClick}
         />
       )}
