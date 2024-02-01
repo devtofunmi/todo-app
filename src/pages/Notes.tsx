@@ -186,13 +186,16 @@ const handlePinClick = (id: number) => {
                 }`}
                
               >
-                <div className='mt-2 flex gap-3'>
-                  <TiPinOutline
-                    size={15}
-                    onClick={() => handleUnpinClick(id)}
-                    className="hover:text-[#4cbf87] text-[#4cbf87] cursor-pointer"
-                  />
+                <div className='relative mb-2'>
+        
+                <div className='absolute right-0 '>
+                   <TiPinOutline
+                   onClick={() => handleUnpinClick(id)}
+                   size={15}
+                   className="hover:text-[#4cbf87] text-white cursor-pointer "
+                   />
                 </div>
+              </div>
                 <h2 
                  onClick={() => handleNoteClick(id)}
                 className="text-[14px] font-bold mb-[10px] md:text-[18px]">{note?.heading}</h2>
