@@ -89,9 +89,7 @@ const Notes: React.FC = () => {
     }
     return note;
   });
-
   setNotes(updatedNotes);
-
   const updatedPinnedNotes = updatedNotes.filter((note) => note.pinned).map((note) => note.id);
   setPinnedNotes(updatedPinnedNotes);
 };
