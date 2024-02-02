@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom"
 import FeaturesCard from "../components/FeaturesCard";
+import Navbar from "../components/Navbar";
 import note from "../assets/note.png";
 import { FC } from "react";
 
@@ -7,6 +8,10 @@ import { FC } from "react";
 const LandingPage: FC = () => {
   return (
     <>
+    <div className="p-5 md:p-5 md:px-[50px]">
+     <Navbar />
+    </div>
+
      <div className="flex p-5 md:p-[50px] w-full gap-[50px] flex-col md:flex-row">
         <div className="w-full md:w-[60%] mt-[70px]" >
           <h1 className="text-[40px] md:text-[90px] font-bold text-white leading-[50px] md:leading-[100px]"
