@@ -31,7 +31,7 @@ const MobileSidebar: FC = () => {
           size={25}
           className="hover:text-[#4cbf87] text-white cursor-pointer "
         />
-        <Link to={"/"}>
+        <Link to={"/reminder"}>
           <h1 className="text-md">Reminders</h1>
         </Link>
       </div>
@@ -40,7 +40,7 @@ const MobileSidebar: FC = () => {
           size={25}
           className="hover:text-[#4cbf87] text-white cursor-pointer "
         />
-        <Link to={"/"}>
+        <Link to={"/archive"}>
           <h1 className="text-md">Archive</h1>
         </Link>
       </div>
@@ -49,7 +49,7 @@ const MobileSidebar: FC = () => {
             size={25}
             className="hover:text-[#4cbf87] text-white cursor-pointer"
         />
-        <Link to={"/"}>
+        <Link to={"/bin"}>
           <h1 className="text-md">Bin</h1>
         </Link>
       </div>
