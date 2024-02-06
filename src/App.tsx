@@ -5,6 +5,9 @@ import SignUp from "./authentication/SignUp";
 import Login from "./authentication/Login";
 import Tasks from "./pages/Tasks";
 import Notes from "./pages/Notes";
+import Reminder from "./pages/Reminder";
+import Archive from "./pages/Archive";
+import Bin from "./pages/Bin";
 
 function App(){
   
@@ -18,6 +21,9 @@ function App(){
             <Route path="/login" element={<Login />} />
             <Route path="/task" element={<Tasks />} />
             <Route path="/note" element={<Notes />} />
+            <Route path="/reminder" element={<Reminder />} />
+            <Route path="/archive" element={<Archive />} />
+            <Route path="/bin" element={<Bin />} />
           </Routes>
         </Router>
       </div>      
