@@ -32,7 +32,7 @@ const Sidebar: FC = () => {
         </div>
       </Link>
 
-      <Link to={"/"}>
+      <Link to={"/reminder"}>
         <div className="mt-5 flex gap-3 items-center  cursor-pointer hover:text-[#4cbf87]">
           <IoMdNotificationsOutline 
             size={25}
@@ -44,7 +44,7 @@ const Sidebar: FC = () => {
         </div>
       </Link>
 
-      <Link to={"/"}>
+      <Link to={"/archive"}>
         <div className="flex gap-3 items-center  cursor-pointer hover:text-[#4cbf87] mt-5">
           <MdOutlineArchive 
             size={25}
@@ -56,7 +56,7 @@ const Sidebar: FC = () => {
         </div>
       </Link>
 
-      <Link to={"/"}>
+      <Link to={"/bin"}>
         <div className="mt-5 flex gap-3 items-center  cursor-pointer hover:text-[#4cbf87]">
           <RiDeleteBin6Line 
             size={25}
