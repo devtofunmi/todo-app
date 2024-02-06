@@ -34,7 +34,7 @@ const Signup: React.FC = () => {
                 />
               <button className=" w-full bg-black py-2 rounded-md hover:text-[#4cbf87] mt-2 text-white">
               <Link
-              to="/login"
+              to="/note"
              
             >  Submit  </Link>
               </button>
